@@ -1,4 +1,4 @@
-import React, { Compontent } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
 class Fib extends Component {
@@ -19,10 +19,10 @@ class Fib extends Component {
   }
 
   async fetchIndexes() {
-    const indexes = await axios.get('/api/values/all');
+    const seenIndexes = await axios.get('/api/values/all');
     this.setState({
       seenIndexes: seenIndexes.data
-    })
+    });
   }
 
   handleSubmit = async (event) => {
@@ -55,7 +55,7 @@ class Fib extends Component {
   render() {
     return (
       <div>
-        <form onSumbit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <label>Enter your index:</label>
           <input
             value={this.state.index}

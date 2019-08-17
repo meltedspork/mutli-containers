@@ -13,3 +13,8 @@ after_success:
   - docker build -t meltedspork/mutli-containers-nginx ./nginx
   - docker build -t meltedspork/mutli-containers-server ./server
   - docker build -t meltedspork/mutli-containers-worker ./worker
+  - echo "$DOCKERPASSWORD" | docker login -u "$DOCKERID" --password-stdin
+  - docker push meltedspork/mutli-containers-client
+  - docker push meltedspork/mutli-containers-nginx
+  - docker push meltedspork/mutli-containers-server
+  - docker push meltedspork/mutli-containers-worker

@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t meltedspork/mutli-containers-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true meltedspork/mutli-containers-test npm test
+
+after_success:
+  - docker build -t meltedspork/mutli-containers-client ./client
+  - docker build -t meltedspork/mutli-containers-nginx ./nginx
+  - docker build -t meltedspork/mutli-containers-server ./server
+  - docker build -t meltedspork/mutli-containers-worker ./worker

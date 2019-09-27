@@ -18,3 +18,16 @@ after_success:
   - docker push meltedspork/mutli-containers-nginx
   - docker push meltedspork/mutli-containers-server
   - docker push meltedspork/mutli-containers-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-us-east-1-706479344561
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWSACCESSKEY
+  secret_access_key:
+    secure: $AWSSECRETKEY

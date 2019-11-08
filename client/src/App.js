@@ -7,12 +7,14 @@ import OtherPage from './OtherPage';
 import Fib from './Fib';
 
 function App() {
+  console.log('Fib Calculator version 5.0, 👍');
+
   return (
     <Router>
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Fib Calculator</h1>
+          <h1 className="App-title">Fib Calculator version 5.0</h1>
         </header>
         <center>
           <Link to="/">Home</Link>
